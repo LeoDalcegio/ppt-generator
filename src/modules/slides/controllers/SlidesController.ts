@@ -1,9 +1,19 @@
 import { Request, Response } from 'express';
-//import { CreateProductDto } from '../dto/CreateProductDto';
-//import CreateProductService from '../services/CreateProductService';
+import { CreateSlideDto } from '../dto/CreateSlideDto';
+import CreateSlideService from '../services/CreateSlideService';
 
-export default class ProductsController {
+export default class SlidesController {
   public async create(request: Request, response: Response): Promise<Response> {
-    return response.json({ teste: 'teste' });
+    const { text, language, searchTerm } = request.body;
+
+    const createSlideDto: CreateSlideDto = {
+      text,
+      language,
+      searchTerm,
+    };
+
+    const createSlideService = new CreateSlideService();
+
+    return response.json({});
   }
 }

@@ -6,7 +6,6 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
-import '@shared/typeorm';
 
 const PORT = process.env.PORT || 3333;
 

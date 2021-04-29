@@ -11,6 +11,7 @@ slidesRouter.post(
     [Segments.BODY]: {
       text: Joi.string().required(),
       language: Joi.string().required(),
+      searchTerm: Joi.string().required(),
     },
   }),
   slidesController.create,
