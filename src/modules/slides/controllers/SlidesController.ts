@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { CreateSlideDto } from '../dto/CreateSlideDto';
-import CreateSlideService from '../services/CreateSlideService';
+import createSlideService from '../services/CreateSlideService';
 
 export default class SlidesController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -12,8 +12,8 @@ export default class SlidesController {
       searchTerm,
     };
 
-    const createSlideService = new CreateSlideService();
+    const content = createSlideService.execute(createSlideDto);
 
-    return response.json({});
+    return response.json(content);
   }
 }
