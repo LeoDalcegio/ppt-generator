@@ -12,7 +12,7 @@ export default class SlidesController {
       searchTerm,
     };
 
-    const content = createSlideService.execute(createSlideDto);
+    const content = await createSlideService.execute(createSlideDto);
 
     return response.json(content);
   }

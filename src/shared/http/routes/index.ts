@@ -3,6 +3,6 @@ import { Router } from 'express';
 
 const routes = Router();
 
-routes.use('/products', slidesRouter);
+routes.use('/slides', slidesRouter);
 
 export default routes;

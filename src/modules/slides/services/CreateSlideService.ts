@@ -5,7 +5,7 @@ import AppError from '@shared/errors/AppError';
 import { IMAGE_DOWNLOADING_ERROR } from '@shared/errors/Errors';
 import IContent from '@shared/interfaces/IContent';
 import imageDownloader from 'image-downloader';
-import { Scraper } from 'images-scraper';
+import Scraper from 'images-scraper';
 import { CreateSlideDto } from '../dto/CreateSlideDto';
 
 const google = new Scraper({
@@ -28,7 +28,7 @@ class CreateSlideService {
     BreakTextIntoSentencesService.execute(content);
     LimitMaximumSentencesService.execute(content);
     await FetchKeywordsOfAllSentencesService.execute(content);
-    //await this.fetchImagesOfAllSentences(content);
+    await this.fetchImagesOfAllSentences(content);
     //await this.downloadAllImages(content);
 
     return content;
@@ -60,10 +60,8 @@ class CreateSlideService {
 
   async fetchGoogleAndReturnImagesLinks(query: string) {
     const results = await google.scrape(query, 4);
-
-    const imagesUrl = results.map((item: any) => {
-      return item.url;
-    });
+    console.log(results);
+    const imagesUrl = [results.url];
 
     return imagesUrl;
   }
